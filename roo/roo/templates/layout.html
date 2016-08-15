@@ -1,0 +1,41 @@
+<!doctype html>
+<title>Kangaroo Parliament</title>
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+<div class="page">
+  <h1>Kangaroo Parliament!</h1>
+  <h2>What will the roo predict?</h2>
+<!--   <div class="metanav">
+  {% if not session.logged_in %}
+    <a href="{{ url_for('login') }}">log in</a>
+  {% else %}
+    <a href="{{ url_for('logout') }}">log out</a>
+  {% endif %}
+  </div> -->
+<!--   {% for message in get_flashed_messages() %}
+    <div class="flash">{{ message }}</div>
+  {% endfor %}
+  {% block body %}{% endblock %} -->
+  <form action="{{ url_for('model_predict') }}" method="post">
+    <dl>
+      <dt>PREC (Mean: 37.37)
+      <dd><input type="text" name="PREC">
+      <dt>EDUC (Mean: 10.97)
+      <dd><input type="text" name="EDUC">
+      <dt>NONW (Mean: 11.87)
+      <dd><input type="text" name="NONW">
+      <dt>SO2 (Mean: 53.77)
+      <dd><input type="text" name = "SO2">
+      <dd><input type="submit" value="Enter">
+    </dl>
+  </form>
+
+{% block list %}
+  <ul class="entries">
+  {% for entry in entries %}
+    <li><h2>Prediction:</h2><h2>{{ entry}}</h2></li>
+  {% else %}
+    <li><em>Unbelievable.  No entries here so far</em></li>
+  {% endfor %}
+  </ul>
+{% endblock %}
+</div>

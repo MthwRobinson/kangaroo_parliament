@@ -1,0 +1,7 @@
+roo/tests/*
+roo/dist/*
+roo/build/*
+roo/roo.egg-info/*
+*.pyc
+roo/*.pyc
+.egg/*
